@@ -70,8 +70,8 @@ export default function Features() {
 
             // Phase 2: Wait for Exit (Duration + Max Delay)
             // Max delay is 4 * 80 = 320ms. Transition is 150ms. Total 470ms.
-            // User requested 50ms (EXTREME overlap).
-            await new Promise(r => setTimeout(r, 50));
+            // User requested 280ms (Aggressive overlap).
+            await new Promise(r => setTimeout(r, 280));
             if (!isRunning) return;
 
             // Phase 3: Shuffle
