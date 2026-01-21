@@ -69,8 +69,9 @@ export default function Features() {
             setIsVisible(false);
 
             // Phase 2: Wait for Exit (Duration + Max Delay)
-            // Max delay is 4 * 80 = 320ms. Transition is 300ms.
-            await new Promise(r => setTimeout(r, 300 + 400));
+            // Max delay is 4 * 80 = 320ms. Transition is 150ms. Total 470ms.
+            // User requested 50ms (EXTREME overlap).
+            await new Promise(r => setTimeout(r, 50));
             if (!isRunning) return;
 
             // Phase 3: Shuffle
@@ -100,18 +101,18 @@ export default function Features() {
 
     return (
         <div className="w-full overflow-hidden">
-            <div className="relative w-full overflow-hidden">
-                {/* Full width container with gaps and square aspect ratio - NO LIMITS, NO SHADOW */}
-                <div className="flex items-end justify-center w-full gap-4 md:gap-6 lg:gap-8 min-w-[1000px] lg:min-w-full">
+            <div className="relative w-full overflow-hidden lg:pt-4">
+                {/* Full width container with responsive grid/flex layout */}
+                <div className="grid grid-cols-2 md:flex md:items-end md:justify-center w-full gap-4 lg:gap-8 max-w-full">
                     {currentFeatures.map((feature, index) => (
                         <div
                             key={feature.name}
                             className={`
-                relative flex items-center justify-center flex-1
+                relative ${index === 4 ? 'hidden md:flex' : 'flex'} items-center justify-center w-full md:flex-1
                 aspect-square
                 ${feature.bgClass}
                 ${feature.shapeClass}
-                transform transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+                transform transition-all duration-150 ease-[cubic-bezier(0.4,0,0.2,1)]
                 will-change-transform
                 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}
               `}
