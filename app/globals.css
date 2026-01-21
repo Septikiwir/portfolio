@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-display: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-primary-green: #00FF94;
+  --color-primary-green-dim: rgba(0, 255, 148, 0.2);
+  --color-background-dark: #0B0B0B;
+  --color-surface-dark: #121212;
+  --color-accent-purple: #A855F7;
+  --color-accent-blue: #3B82F6;
+  --color-accent-orange: #F97316;
+  --color-accent-yellow: #EAB308;
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-surface: rgba(255, 255, 255, 0.03);
+
+  --shadow-neon: 0 0 20px rgba(0, 255, 148, 0.3), 0 0 10px rgba(0, 255, 148, 0.1);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  --image-hero-glow: radial-gradient(circle at center, rgba(0, 255, 148, 0.08) 0%, rgba(11, 11, 11, 0) 70%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom Utilities */
+.glass-nav {
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover effects for specific colors */
+.feature-card.purple:hover {
+  box-shadow: 0 20px 40px -10px rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.feature-card.green:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 255, 148, 0.2);
+  border-color: rgba(0, 255, 148, 0.3);
+}
+
+.feature-card.orange:hover {
+  box-shadow: 0 20px 40px -10px rgba(249, 115, 22, 0.2);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.feature-card.yellow:hover {
+  box-shadow: 0 20px 40px -10px rgba(234, 179, 8, 0.2);
+  border-color: rgba(234, 179, 8, 0.3);
+}
+
+.feature-card.blue:hover {
+  box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Global resets & styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background-dark text-white font-sans overflow-x-hidden selection:bg-primary-green/30 selection:text-white;
 }
