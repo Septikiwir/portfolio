@@ -4,8 +4,8 @@
   --font-display: "Inter", sans-serif;
   --font-sans: "Inter", sans-serif;
 
-  --color-primary-green: #00FF94;
-  --color-primary-green-dim: rgba(0, 255, 148, 0.2);
+  --color-primary-green: #6D28D9;
+  --color-primary-green-dim: rgba(109, 40, 217, 0.2);
   --color-background-dark: #0B0B0B;
   --color-surface-dark: #121212;
   --color-accent-purple: #A855F7;
@@ -15,10 +15,10 @@
   --color-glass-border: rgba(255, 255, 255, 0.08);
   --color-glass-surface: rgba(255, 255, 255, 0.03);
 
-  --shadow-neon: 0 0 20px rgba(0, 255, 148, 0.3), 0 0 10px rgba(0, 255, 148, 0.1);
+  --shadow-neon: 0 0 20px rgba(109, 40, 217, 0.3), 0 0 10px rgba(109, 40, 217, 0.1);
   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
-  --image-hero-glow: radial-gradient(circle at center, rgba(0, 255, 148, 0.08) 0%, rgba(11, 11, 11, 0) 70%);
+  --image-hero-glow: radial-gradient(circle at center, rgba(109, 40, 217, 0.08) 0%, rgba(11, 11, 11, 0) 70%);
 }
 
 /* Custom Utilities */

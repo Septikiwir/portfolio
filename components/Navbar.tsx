@@ -48,7 +48,7 @@ export default function Navbar() {
                 </div>
                 <Link
                     href="#"
-                    className="bg-primary-green text-black font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-white transition-colors hover:shadow-neon"
+                    className="bg-primary-green text-white font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-white hover:text-black transition-colors hover:shadow-neon"
                 >
                     Hire Me
                 </Link>
