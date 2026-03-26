@@ -16,38 +16,38 @@ export default function Navbar() {
                 </div>
                 <div className="hidden md:flex items-center gap-1">
                     <Link
-                        href="#"
+                        href="#hero"
                         className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
                     >
                         Home
                     </Link>
                     <Link
-                        href="#"
+                        href="#projects"
                         className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
                     >
                         Projects
                     </Link>
                     <Link
-                        href="#"
+                        href="#about"
                         className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
                     >
                         About
                     </Link>
                     <Link
-                        href="#"
+                        href="#experience"
                         className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
                     >
-                        Skills
+                        Experience
                     </Link>
                     <Link
-                        href="#"
+                        href="#contact"
                         className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5"
                     >
                         Contact
                     </Link>
                 </div>
                 <Link
-                    href="#"
+                    href="#contact"
                     className="bg-primary-green text-white font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-white hover:text-black transition-colors hover:shadow-neon"
                 >
                     Hire Me

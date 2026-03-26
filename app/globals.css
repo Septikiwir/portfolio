@@ -73,6 +73,48 @@
   border-color: rgba(59, 130, 246, 0.3);
 }
 
+/* Section Utilities */
+.section-container {
+  @apply max-w-6xl mx-auto px-6 py-24;
+}
+
+.section-heading {
+  @apply text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 uppercase;
+}
+
+.section-subheading {
+  @apply text-base md:text-lg text-gray-400 font-light max-w-2xl leading-relaxed mb-12;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px -10px rgba(109, 40, 217, 0.15);
+}
+
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary-green to-accent-purple;
+}
+
+/* Skill bar animation */
+.skill-bar {
+  @apply h-1.5 rounded-full bg-white/5 overflow-hidden;
+}
+
+.skill-bar-fill {
+  @apply h-full rounded-full transition-all duration-700 ease-out;
+  background: linear-gradient(90deg, var(--color-primary-green), var(--color-accent-purple));
+}
+
 /* Global resets & styles */
 html {
   scroll-behavior: smooth;
