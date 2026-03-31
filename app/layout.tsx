@@ -1,29 +1,47 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import {
+  DM_Sans,
+  Inter,
+  Manrope,
+  Playfair_Display,
+  Plus_Jakarta_Sans,
+  Space_Grotesk,
+} from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
+  subsets: ["latin"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  style: ["normal", "italic"],
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "UI/UX Designer Portfolio",
-  description: "Portfolio of a Senior UI/UX Designer & Product Strategist",
+  title: "Aero. Creative Agency",
+  description: "Premium editorial portfolio for a modern creative agency.",
 };
 
 export default function RootLayout({
@@ -32,16 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable}`}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased font-sans">
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} ${manrope.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${plusJakartaSans.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
