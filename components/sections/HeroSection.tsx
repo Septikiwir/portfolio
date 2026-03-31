@@ -1,8 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+
+const images = [
+  "/1.jpg",
+  "/2.jpg",
+  "/3.jpg",
+  "/4.jpg",
+  "/5.jpg",
+  "/6.jpg"
+];
+
+const CYCLE_INTERVAL = 1000;
+
+const textStyles = [
+  { style: "font-black tracking-tighter uppercase", outline: false },
+  { style: "font-semibold tracking-normal uppercase", outline: false },
+  { style: "font-light tracking-normal uppercase", outline: false },
+  { style: "font-bold tracking-normal uppercase", outline: false },
+  { style: "font-thin tracking-normal uppercase", outline: false },
+  { style: "font-bold tracking-tight uppercase", outline: true },
+];
 
 /* ─── BlurIn Animation Component ────────────────────────────── */
 interface BlurInProps {
@@ -30,9 +50,10 @@ interface PillProps {
   children: React.ReactNode;
   variant?: 'filled' | 'outlined';
   delay?: number;
+  layoutId?: string;
 }
 
-function Pill({ children, variant = 'outlined', delay = 0 }: PillProps) {
+function Pill({ children, variant = 'outlined', delay = 0, layoutId }: PillProps) {
   const base = 'inline-flex items-center px-5 py-1.5 rounded-full text-[0.55em] font-sans font-semibold tracking-normal align-middle mx-1 translate-y-[-0.08em]';
   const styles = variant === 'filled'
     ? `${base} bg-white/15 backdrop-blur-md text-white border border-white/10`
@@ -40,9 +61,13 @@ function Pill({ children, variant = 'outlined', delay = 0 }: PillProps) {
 
   return (
     <motion.span
+      layoutId={layoutId}
       initial={{ opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5, delay, ease: [0.25, 0.4, 0.25, 1] }}
+      transition={{
+        duration: 0.5, delay, ease: [0.25, 0.4, 0.25, 1],
+        layout: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+      }}
       className={styles}
     >
       {children}
@@ -247,6 +272,22 @@ function HeroBackground() {
 
 /* ─── Hero Section ──────────────────────────────────────────── */
 export default function HeroSection() {
+  // Start with flipCount of 6 so it aligns with the end of the 6-cycle intro banner seamlessly!
+  const [flipCount, setFlipCount] = useState(6);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFlipCount(prev => prev + 1);
+    }, CYCLE_INTERVAL);
+    return () => clearInterval(interval);
+  }, []);
+
+  const getIndex = (val: number) => ((val % images.length) + images.length) % images.length;
+  const frontIndex = flipCount % 2 === 0 ? getIndex(flipCount) : getIndex(flipCount - 1);
+  const backIndex = flipCount % 2 === 1 ? getIndex(flipCount) : getIndex(flipCount - 1);
+
+  const currentTextStyle = textStyles[flipCount % textStyles.length];
+
   return (
     <section
       id="hero"
@@ -262,6 +303,40 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-[#070612]/30 mix-blend-multiply" />
       </div>
+
+      {/* Floating Photo Card from intro */}
+      <motion.div
+        layoutId="hero-card"
+        className="absolute z-30 rounded-xl shadow-2xl border-4 border-[#e8e6e1]"
+        style={{
+          top: 0,
+          bottom: 0,
+          left: 800,
+          right: 0,
+          margin: 'auto',
+          width: 'clamp(6.3rem, 16.8vw, 11.9rem)',
+          aspectRatio: '3/4',
+          transformStyle: 'preserve-3d'
+        }}
+        animate={{ rotateY: flipCount * 180, rotateZ: 2 }}
+        transition={{ duration: 0.4, ease: "easeInOut", layout: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } }}
+      >
+        {/* FRONT FACE */}
+        <div
+          className="absolute inset-0 overflow-hidden rounded-lg bg-gray-200"
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+        >
+          <img src={images[frontIndex]} alt="Featured works front" className="w-full h-full object-cover grayscale-[30%]" />
+        </div>
+
+        {/* BACK FACE */}
+        <div
+          className="absolute inset-0 overflow-hidden rounded-lg bg-gray-200"
+          style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+        >
+          <img src={images[backIndex]} alt="Featured works back" className="w-full h-full object-cover grayscale-[30%]" />
+        </div>
+      </motion.div>
 
       {/* Bottom fade gradient */}
       <div
@@ -294,12 +369,45 @@ export default function HeroSection() {
               <BlurIn delay={0.15} duration={0.7}>
                 <h1 className="text-4xl md:text-5xl lg:text-[3.8rem] xl:text-[4.2rem] font-serif italic font-normal leading-[1.25] lg:leading-[1.3] text-white max-w-5xl">
                   Hi! I&apos;m
-                  <Pill variant="outlined" delay={0.3}>Andrew Scott</Pill>
+                  <Pill variant="outlined" delay={0.3}>Pramudya</Pill>
                   <br className="hidden md:block" />
                   a
-                  <Pill variant="filled" delay={0.45}>Digital Designer</Pill>
+                  <Pill variant="filled" delay={0.45} layoutId="designer-pill">
+                    <div className="relative inline-flex items-center justify-center">
+                      <span
+                        className={`absolute ${currentTextStyle.style}`}
+                        style={{
+                          color: '#ffffff',
+                          opacity: currentTextStyle.outline ? 0 : 1,
+                          transition: 'all 1s ease, opacity 0.8s ease',
+                          whiteSpace: 'nowrap'
+                        }}
+                      >
+                        UI/UX Designer
+                      </span>
+                      <span
+                        className={`absolute ${currentTextStyle.style}`}
+                        style={{
+                          color: 'transparent',
+                          WebkitTextStroke: '1px #ffffff',
+                          paintOrder: 'stroke fill',
+                          opacity: currentTextStyle.outline ? 1 : 0,
+                          transition: 'all 1s ease, opacity 0.8s ease',
+                          whiteSpace: 'nowrap'
+                        }}
+                      >
+                        UI/UX Designer
+                      </span>
+                      <span
+                        className="invisible font-thin tracking-[0.01em] uppercase"
+                        style={{ whiteSpace: 'nowrap' }}
+                      >
+                        UI/UX Designer
+                      </span>
+                    </div>
+                  </Pill>
                   from
-                  <Pill variant="outlined" delay={0.6}>Boston</Pill>
+                  <Pill variant="outlined" delay={0.6}>Yogyakarta</Pill>
                   <br className="hidden md:block" />
                   <span className="block mt-1">turning your ideas into</span>
                   <span className="block">pixel-perfect realities</span>
