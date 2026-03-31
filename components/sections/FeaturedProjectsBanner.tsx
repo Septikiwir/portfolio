@@ -4,17 +4,21 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
-  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=400"
+  "/1.jpg",
+  "/2.jpg",
+  "/3.jpg",
+  "/4.jpg",
+  "/5.jpg",
+  "/6.jpg"
 ];
 
 const textStyles = [
-  { style: "font-black tracking-tighter uppercase", size: "text-[clamp(2.5rem,7vw,9.5rem)]" },
-  { style: "font-semibold tracking-normal uppercase", size: "text-[clamp(2.5rem,7vw,8.5rem)]" },
-  { style: "font-light tracking-[0.2em] uppercase", size: "text-[clamp(2.2rem,6vw,7.5rem)]" },
-  { style: "font-bold tracking-[0.05em] uppercase", size: "text-[clamp(2.5rem,7vw,8rem)]" },
-  { style: "font-thin tracking-[0.4em] uppercase", size: "text-[clamp(2rem,5vw,6.5rem)]" }
+  { style: "font-black tracking-tighter uppercase", size: "text-[clamp(2.5rem,7vw,9.5rem)]", outline: false },
+  { style: "font-semibold tracking-normal uppercase", size: "text-[clamp(2.5rem,7vw,8.5rem)]", outline: false },
+  { style: "font-light tracking-[0.2em] uppercase", size: "text-[clamp(2.2rem,6vw,7.5rem)]", outline: false },
+  { style: "font-bold tracking-[0.05em] uppercase", size: "text-[clamp(2.5rem,7vw,8rem)]", outline: false },
+  { style: "font-thin tracking-[0.4em] uppercase", size: "text-[clamp(2rem,5vw,6.5rem)]", outline: false },
+  { style: "font-bold tracking-tight uppercase", size: "text-[clamp(2.5rem,7vw,9rem)]", outline: true },
 ];
 
 export default function FeaturedProjectsBanner() {
@@ -23,7 +27,7 @@ export default function FeaturedProjectsBanner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setFlipCount(prev => prev + 1);
-    }, 1500);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -47,9 +51,29 @@ export default function FeaturedProjectsBanner() {
 
       <div className="flex flex-col items-center justify-center relative z-10 w-full max-w-[1200px] mx-auto text-center h-full">
 
-        {/* Top Text Fixed Container */}
-        <div className="w-full h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center overflow-visible">
-          <h2 className={`text-[#3b3a38] leading-none m-0 select-none transition-all duration-1000 ${currentTextStyle.size} ${currentTextStyle.style}`}>
+        <div className="w-full h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center overflow-visible relative">
+          {/* Solid fill layer */}
+          <h2
+            className={`absolute leading-none m-0 select-none ${currentTextStyle.size} ${currentTextStyle.style}`}
+            style={{
+              color: '#3b3a38',
+              opacity: currentTextStyle.outline ? 0 : 1,
+              transition: 'all 1s ease, opacity 0.8s ease',
+            }}
+          >
+            UI/UX
+          </h2>
+          {/* Outline layer */}
+          <h2
+            className={`absolute leading-none m-0 select-none ${currentTextStyle.size} ${currentTextStyle.style}`}
+            style={{
+              color: 'transparent',
+              WebkitTextStroke: '2px #3b3a38',
+              paintOrder: 'stroke fill',
+              opacity: currentTextStyle.outline ? 1 : 0,
+              transition: 'all 1s ease, opacity 0.8s ease',
+            }}
+          >
             UI/UX
           </h2>
         </div>
@@ -96,9 +120,29 @@ export default function FeaturedProjectsBanner() {
           </motion.div>
         </div>
 
-        {/* Bottom Text Fixed Container */}
-        <div className="w-full h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center overflow-visible">
-          <h2 className={`text-[#3b3a38] leading-none m-0 select-none transition-all duration-1000 ${currentTextStyle.size} ${currentTextStyle.style}`}>
+        <div className="w-full h-[120px] md:h-[180px] lg:h-[220px] flex items-center justify-center overflow-visible relative">
+          {/* Solid fill layer */}
+          <h2
+            className={`absolute leading-none m-0 select-none ${currentTextStyle.size} ${currentTextStyle.style}`}
+            style={{
+              color: '#3b3a38',
+              opacity: currentTextStyle.outline ? 0 : 1,
+              transition: 'all 1s ease, opacity 0.8s ease',
+            }}
+          >
+            Designer
+          </h2>
+          {/* Outline layer */}
+          <h2
+            className={`absolute leading-none m-0 select-none ${currentTextStyle.size} ${currentTextStyle.style}`}
+            style={{
+              color: 'transparent',
+              WebkitTextStroke: '2px #3b3a38',
+              paintOrder: 'stroke fill',
+              opacity: currentTextStyle.outline ? 1 : 0,
+              transition: 'all 1s ease, opacity 0.8s ease',
+            }}
+          >
             Designer
           </h2>
         </div>
