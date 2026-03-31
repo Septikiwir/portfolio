@@ -35,9 +35,9 @@ interface BlurInProps {
 function BlurIn({ children, delay = 0, duration = 0.6, className = '' }: BlurInProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
+      initial={{ opacity: 0, filter: 'blur(15px)', y: 30 }}
       animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-      transition={{ duration, delay, ease: [0.25, 0.4, 0.25, 1] }}
+      transition={{ duration, delay, ease: [0.25, 1, 0.5, 1] }}
       className={className}
     >
       {children}
@@ -62,11 +62,11 @@ function Pill({ children, variant = 'outlined', delay = 0, layoutId }: PillProps
   return (
     <motion.span
       layoutId={layoutId}
-      initial={{ opacity: 0, scale: 0.85 }}
+      initial={layoutId ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
-        duration: 0.5, delay, ease: [0.25, 0.4, 0.25, 1],
-        layout: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+        duration: 0.4, delay: layoutId ? 0 : delay, ease: [0.25, 1, 0.5, 1],
+        layout: { duration: 0.77, ease: [0.25, 1, 0.5, 1] },
       }}
       className={styles}
     >
@@ -83,7 +83,7 @@ interface SplitTextProps {
   duration?: number;
 }
 
-function SplitText({ children, className = '', wordDelay = 0.08, duration = 0.6 }: SplitTextProps) {
+function SplitText({ children, className = '', wordDelay = 0.04, duration = 0.46 }: SplitTextProps) {
   const words = children.split(' ');
 
   return (
@@ -96,7 +96,7 @@ function SplitText({ children, className = '', wordDelay = 0.08, duration = 0.6 
           transition={{
             duration,
             delay: i * wordDelay,
-            ease: [0.25, 0.4, 0.25, 1],
+            ease: [0.25, 1, 0.5, 1],
           }}
           style={{ display: 'inline-block', marginRight: '0.3em' }}
         >
@@ -295,14 +295,19 @@ export default function HeroSection() {
       style={{ backgroundColor: '#070612' }}
     >
       {/* Image Background */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+      <motion.div
+        initial={{ opacity: 0, scale: 1.03 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.4, ease: [0.25, 1, 0.5, 1] }}
+        className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"
+      >
         <img
-          src="https://images.pexels.com/photos/16068775/pexels-photo-16068775.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          src="https://images.pexels.com/photos/5853347/pexels-photo-5853347.png?auto=compress&cs=tinysrgb&w=1920"
           alt="Serene dark ocean waves"
           className="w-full h-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-[#070612]/30 mix-blend-multiply" />
-      </div>
+        <div className="absolute inset-0 bg-[#070612]/70 mix-blend-multiply" />
+      </motion.div>
 
       {/* Floating Photo Card from intro */}
       <motion.div
@@ -319,7 +324,7 @@ export default function HeroSection() {
           transformStyle: 'preserve-3d'
         }}
         animate={{ rotateY: flipCount * 180, rotateZ: 2 }}
-        transition={{ duration: 0.4, ease: "easeInOut", layout: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } }}
+        transition={{ duration: 0.3, ease: "easeInOut", layout: { duration: 0.77, ease: [0.25, 1, 0.5, 1] } }}
       >
         {/* FRONT FACE */}
         <div
@@ -339,7 +344,10 @@ export default function HeroSection() {
       </motion.div>
 
       {/* Bottom fade gradient */}
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.77, ease: 'easeOut', delay: 0.23 }}
         className="absolute bottom-0 left-0 w-full h-40 z-10"
         style={{
           background: 'linear-gradient(to top, #070612, transparent)',
@@ -347,23 +355,11 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-20 h-full flex items-end pb-[10vh] md:pb-[12vh]">
+      <div className="relative z-20 h-full flex items-center">
         <div className="max-w-7xl w-full mx-auto px-6 lg:px-12">
           <div className="flex flex-col gap-10">
             {/* Top group: availability badge + heading + subtitle */}
             <div className="flex flex-col gap-8">
-              {/* Availability Badge */}
-              <BlurIn delay={0} duration={0.6}>
-                <div className="inline-flex items-center gap-2.5 w-fit">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span>
-                  </span>
-                  <span className="text-sm font-medium text-white/70 tracking-wide">
-                    Available for freelance
-                  </span>
-                </div>
-              </BlurIn>
 
               {/* Main Heading — Mixed typography with inline pills */}
               <BlurIn delay={0.15} duration={0.7}>
@@ -379,7 +375,7 @@ export default function HeroSection() {
                         style={{
                           color: '#ffffff',
                           opacity: currentTextStyle.outline ? 0 : 1,
-                          transition: 'all 1s ease, opacity 0.8s ease',
+                          transition: 'all 0.77s ease, opacity 0.6s ease',
                           whiteSpace: 'nowrap'
                         }}
                       >
@@ -392,7 +388,7 @@ export default function HeroSection() {
                           WebkitTextStroke: '1px #ffffff',
                           paintOrder: 'stroke fill',
                           opacity: currentTextStyle.outline ? 1 : 0,
-                          transition: 'all 1s ease, opacity 0.8s ease',
+                          transition: 'all 0.46s ease, opacity 0.4s ease',
                           whiteSpace: 'nowrap'
                         }}
                       >
@@ -409,8 +405,6 @@ export default function HeroSection() {
                   from
                   <Pill variant="outlined" delay={0.6}>Yogyakarta</Pill>
                   <br className="hidden md:block" />
-                  <span className="block mt-1">turning your ideas into</span>
-                  <span className="block">pixel-perfect realities</span>
                 </h1>
               </BlurIn>
 
