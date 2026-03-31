@@ -193,15 +193,7 @@ function ProjectCard({ project }: { project: Project }) {
 export default function ProjectsSection() {
     return (
         <section id="projects" className="section-container">
-            <div className="text-center mb-16">
-                <h2 className="section-heading">
-                    Featured <span className="gradient-text">Projects</span>
-                </h2>
-                <p className="section-subheading mx-auto">
-                    A curated selection of projects showcasing my expertise in crafting
-                    intuitive, user-centric digital experiences.
-                </p>
-            </div>
+            {/* The previous section heading was removed as the new FeaturedProjectsBanner replaces it */}
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10 px-2 max-w-[1400px] mx-auto">
                 {projects.map((project, index) => (

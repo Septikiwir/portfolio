@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/sections/HeroSection";
+import FeaturedProjectsBanner from "../components/sections/FeaturedProjectsBanner";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import AboutSection from "../components/sections/AboutSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
@@ -19,7 +20,7 @@ export default function Home() {
       <Navbar />
 
       <div className="relative z-10">
-        <HeroSection />
+        <FeaturedProjectsBanner />
         <ProjectsSection />
         <AboutSection />
         <ExperienceSection />

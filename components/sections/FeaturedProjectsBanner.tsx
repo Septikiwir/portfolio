@@ -17,7 +17,7 @@ const textStyles = [
   { style: "font-thin tracking-[0.4em] uppercase", size: "text-[clamp(2rem,5vw,6.5rem)]" }
 ];
 
-export default function HeroSection() {
+export default function FeaturedProjectsBanner() {
   const [flipCount, setFlipCount] = useState(0);
 
   useEffect(() => {

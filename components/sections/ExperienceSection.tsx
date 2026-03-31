@@ -225,7 +225,7 @@ export default function ExperienceSection() {
                     My <span className="gradient-text">Experiences</span>
                 </h2>
                 <p className="section-subheading mx-auto">
-                    Here are some of my professional experiences and the impact I've made.
+                    Here are some of my professional experiences and the impact I&apos;ve made.
                 </p>
             </div>
 
