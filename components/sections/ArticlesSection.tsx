@@ -2,25 +2,20 @@ import { Activity, ArrowLeft, HeartPulse, Leaf } from "lucide-react";
 
 import type { ArticleItem } from "@/content/home";
 
-function iconFor(article: ArticleItem) {
-  switch (article.icon) {
-    case "monitoring":
-      return Activity;
-    case "health_and_safety":
-      return HeartPulse;
-    case "eco":
-      return Leaf;
-  }
-}
+const ARTICLE_ICON_BY_KEY = {
+  monitoring: Activity,
+  health_and_safety: HeartPulse,
+  eco: Leaf,
+} as const;
 
 function ArticleCard({ article }: { article: ArticleItem }) {
-  const Icon = iconFor(article);
+  const Icon = ARTICLE_ICON_BY_KEY[article.icon];
   const accent = article.accentColor;
 
   return (
     <div className="group relative h-[440px] cursor-pointer md:h-[480px]">
       <div
-        className="absolute inset-0 rounded-3xl border border-black/10 bg-black/[0.92] opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:opacity-100 group-hover:translate-x-8 group-hover:translate-y-2 group-hover:rotate-[2deg]"
+        className="absolute inset-0 rounded-3xl border border-black/10 bg-black/[0.92] opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:opacity-100 md:group-hover:translate-x-8 md:group-hover:translate-y-2 md:group-hover:rotate-[2deg]"
         style={{ zIndex: 1 }}
       >
         <div className="p-6 pt-8 opacity-40">
@@ -36,7 +31,7 @@ function ArticleCard({ article }: { article: ArticleItem }) {
       </div>
 
       <div
-        className="absolute right-3 top-6 overflow-hidden rounded-r-3xl rounded-l-sm border border-black/10 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:opacity-100 group-hover:translate-x-[36px]"
+        className="absolute right-3 top-6 overflow-hidden rounded-r-3xl rounded-l-sm border border-black/10 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:opacity-100 md:group-hover:translate-x-[36px]"
         style={{
           width: 48,
           height: 280,
@@ -102,31 +97,32 @@ function ArticleCard({ article }: { article: ArticleItem }) {
 
 export function ArticlesSection({ articles }: { articles: ArticleItem[] }) {
   return (
-    <section className="section-pad bg-[var(--page-bg)]">
-      <div className="container-main space-y-10">
-        <div className="flex items-center justify-between pb-2 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)]">
+    <section className="bg-[var(--page-bg)] py-12 sm:py-16 md:py-20">
+      {/* Mobile-first wrapper + responsive grid; ArticleCard visuals stay unchanged */}
+      <div className="mx-auto max-w-6xl space-y-8 px-4 sm:px-6 md:px-8 lg:px-12 md:space-y-10">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-2 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)]">
           <span>005</span>
-          <span className="normal-case tracking-normal">Our Articles</span>
+          <span className="normal-case tracking-normal">{"//Our Articles"}</span>
         </div>
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="text-display text-[clamp(2.2rem,4.4vw,3.35rem)] leading-[1.05] tracking-[-0.02em]">
             Our latest
             <br />
             <span className="text-italic text-accent">Articles</span> for you
           </h2>
-          <p className="max-w-sm text-sm leading-7 text-[var(--text-secondary)]">
+          <p className="max-w-full text-sm leading-7 text-[var(--text-secondary)] sm:max-w-sm">
             Lectus amet est nunc orci placerat gravida fusce sed amet. Aliquam
             tincidunt nunc.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 lg:grid-cols-3">
           {articles.map((article) => (
             <ArticleCard key={article.statement} article={article} />
           ))}
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <button className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition hover:scale-[1.02]">
               <ArrowLeft className="h-4 w-4" />

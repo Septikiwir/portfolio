@@ -15,6 +15,7 @@ export type ProjectItem = {
   tagTwo: string;
   title: string;
   gradient: string;
+  images?: string[];
 };
 
 export type ArticleItem = {
@@ -72,12 +73,14 @@ export const projects: ProjectItem[] = [
     tagTwo: "Motion",
     title: "LAZO. MOTION DESIGN",
     gradient: "from-[#e9b0a7] via-[#e3a6a0] to-[#d3897c]",
+    images: ["/window.svg", "/next.svg"],
   },
   {
     tag: "Strategy",
     tagTwo: "UI/UX",
     title: "CRYPTO. APP DESIGN",
     gradient: "from-[#c9d0d7] via-[#b7c1c9] to-[#8f9dad]",
+    images: ["/vercel.svg", "/globe.svg"],
   },
 ];
 

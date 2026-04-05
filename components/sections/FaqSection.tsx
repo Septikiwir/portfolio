@@ -10,13 +10,14 @@ import {
 
 export function FaqSection({ faqs }: { faqs: FaqItem[] }) {
   return (
-    <section className="section-pad bg-[var(--section-bg)]">
-      <div className="container-main">
-        <div className="flex items-center justify-between pb-10 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)]">
+    <section className="bg-[var(--section-bg)] py-12 sm:py-16 md:py-20">
+      {/* Wrapper-only changes: spacing + stacking to keep FAQ readable on mobile */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-8 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)] sm:pb-10">
           <span>006</span>
-          <span className="normal-case tracking-normal">Page</span>
+          <span className="normal-case tracking-normal">{"//FAQ"}</span>
         </div>
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="grid gap-8 md:gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-4">
             <h2 className="text-display text-[clamp(2.2rem,4.4vw,3.35rem)] leading-[1.05] tracking-[-0.02em]">
               Questions

@@ -2,23 +2,24 @@ import type { ServiceItem } from "@/content/home";
 
 export function ServicesSection({ services }: { services: ServiceItem[] }) {
   return (
-    <section className="section-pad bg-[var(--section-bg)]">
-      <div className="container-main">
-        <div className="flex items-center justify-between pb-10 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)]">
+    <section className="bg-[var(--section-bg)] py-12 sm:py-16 md:py-20">
+      {/* Mobile-first section wrapper: consistent padding + max width */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-8 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)] sm:pb-10">
           <span>002</span>
           <span className="normal-case tracking-normal text-[var(--text-accent)]">
-            //Our Services
+            {"//Our Services"}
           </span>
         </div>
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="grid gap-8 md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-6">
-            <p className="max-w-sm text-sm leading-7 text-[var(--text-secondary)]">
+            <p className="max-w-full text-sm leading-7 text-[var(--text-secondary)] sm:max-w-sm">
               Lectus amet est nunc orci placerat gravida fusce sed amet. Aliquam
               tincidunt nunc a nunc orci placerat gravida fusce sed amet.
             </p>
             <div className="h-[320px] rounded-3xl bg-gradient-to-br from-[#f1d2cc] via-[#d7c4c6] to-[#b8c5d2]" />
-            <div className="flex items-end justify-between gap-6">
-              <p className="max-w-xs text-sm leading-7 text-[var(--text-secondary)]">
+            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+              <p className="max-w-full text-sm leading-7 text-[var(--text-secondary)] sm:max-w-xs">
                 Lectus aliquam tincidunt nunc a nunc orci placerat gravida.
                 Fusce sed amet.
               </p>
@@ -35,7 +36,7 @@ export function ServicesSection({ services }: { services: ServiceItem[] }) {
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="grid items-center gap-4 py-6 md:grid-cols-[0.14fr_0.56fr_0.3fr]"
+                  className="grid items-center gap-3 py-6 md:grid-cols-[0.14fr_0.56fr_0.3fr] md:gap-4"
                 >
                   <div className="text-xs uppercase tracking-[0.3em] text-[var(--text-accent)]">
                     {service.id}

@@ -2,15 +2,16 @@ import type { StatItem } from "@/content/home";
 
 export function AboutStatsSection({ stats }: { stats: StatItem[] }) {
   return (
-    <section className="section-pad bg-[var(--section-bg)]">
-      <div className="container-main">
-        <div className="flex items-center justify-between pb-10 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)]">
+    <section className="bg-[var(--section-bg)] py-12 sm:py-16 md:py-20">
+      {/* Consistent section wrapper: spacing + max-width, no card internals touched */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-8 text-xs uppercase tracking-[0.35em] text-[var(--text-accent)] sm:pb-10">
           <span>004</span>
-          <span className="normal-case tracking-normal">//Quick Overview</span>
+          <span className="normal-case tracking-normal">{"//Quick Overview"}</span>
         </div>
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="grid gap-8 md:gap-14 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-6">
-            <p className="max-w-sm text-sm leading-7 text-[var(--text-secondary)]">
+            <p className="max-w-full text-sm leading-7 text-[var(--text-secondary)] sm:max-w-sm">
               We create compelling experiences that feel calm, elevated, and
               modern.
             </p>
@@ -37,7 +38,7 @@ export function AboutStatsSection({ stats }: { stats: StatItem[] }) {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-8 border-t border-[var(--divider)] pt-10 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-12 grid grid-cols-2 gap-4 border-t border-[var(--divider)] pt-10 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5 lg:gap-8">
           {stats.map((item) => (
             <div key={item.value} className="space-y-2">
               <div className="text-xl font-semibold text-[var(--text-primary)]">

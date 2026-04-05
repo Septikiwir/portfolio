@@ -1,11 +1,12 @@
 export function FooterCta() {
   return (
-    <section className="bg-[var(--footer-bg)] py-20 text-[var(--footer-text)]">
-      <div className="container-main">
-        <div className="flex items-center justify-between pb-10 text-xs uppercase tracking-[0.35em] text-white/40">
+    <section className="bg-[var(--footer-bg)] py-12 text-[var(--footer-text)] sm:py-16 md:py-20">
+      {/* Footer visuals unchanged; only stacking/wrapping to prevent mobile overflow */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-8 text-xs uppercase tracking-[0.35em] text-white/40 sm:pb-10">
           <span>007</span>
           <span className="normal-case tracking-normal text-white/40">
-            Let&apos;s Talk
+            {"//Let's Talk"}
           </span>
         </div>
         <div className="space-y-10">
@@ -13,8 +14,8 @@ export function FooterCta() {
             contact
           </div>
 
-          <h2 className="text-display text-[clamp(3.4rem,9vw,7.6rem)] leading-[0.92] tracking-[-0.03em] text-white">
-            <span className="text-white">hello</span>
+          <h2 className="text-display max-w-full break-all text-[clamp(3.4rem,9vw,7.6rem)] leading-[0.92] tracking-[-0.03em] text-white sm:break-normal">
+            <span className="text-white">workwithyutaya</span>
             <span className="inline-flex align-baseline">
               <span
                 className="mx-[0.12em] inline-flex items-center justify-center rounded-full border-[0.14em] px-[0.34em]"
@@ -27,7 +28,7 @@ export function FooterCta() {
                 @
               </span>
             </span>
-            <span className="text-white">tigranz</span>
+            <span className="text-white">gmail</span>
             <span style={{ color: "#F2D25C" }}>.</span>
             <span style={{ color: "#C9FF3D" }}>com</span>
           </h2>
@@ -40,10 +41,9 @@ export function FooterCta() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-white/55">
+          <div className="flex flex-col gap-4 text-sm text-white/55 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <span>
-              Made with <span style={{ color: "#B9A9FF" }}>LOVE</span> by ©Tigran
-              Azatyan.
+              Made with <span style={{ color: "#B9A9FF" }}>LOVE</span> by ©WahyuSeptaPramudya
             </span>
             <div className="flex items-center gap-8">
               <a className="text-white/80 transition hover:text-white" href="#">
