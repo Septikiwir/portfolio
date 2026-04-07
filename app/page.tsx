@@ -1,38 +1,29 @@
-import {
-  articles,
-  faqs,
-  logos,
-  navLinks,
-  projects,
-  services,
-  stats,
-} from "@/content/home";
-
-import { AboutStatsSection } from "@/components/sections/AboutStatsSection";
-import { ArticlesSection } from "@/components/sections/ArticlesSection";
-import { FaqSection } from "@/components/sections/FaqSection";
-import { FooterCta } from "@/components/sections/FooterCta";
-import { HeaderNav } from "@/components/sections/HeaderNav";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { LogoStrip } from "@/components/sections/LogoStrip";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import StatsStrip from "./components/StatsStrip";
+import ProjectGrid from "./components/ProjectGrid";
+import ToolboxSection from "./components/ToolboxSection";
+import MarqueeSection from "./components/MarqueeSection";
+import HowItWorks from "./components/HowItWorks";
+import Testimonials from "./components/Testimonials";
+import FaqSection from "./components/FaqSection";
+import SocialSection from "./components/SocialSection";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-[var(--page-bg)]">
-      <HeaderNav navLinks={navLinks} />
-
-      <main className="flex-1">
-        <HeroSection />
-        <LogoStrip logos={logos} />
-        <ServicesSection services={services} />
-        <ProjectsSection projects={projects} />
-        <AboutStatsSection stats={stats} />
-        <ArticlesSection articles={articles} />
-        <FaqSection faqs={faqs} />
-        <FooterCta />
-      </main>
-    </div>
+    <>
+      <Navbar />
+      <HeroSection />
+      <StatsStrip />
+      <ProjectGrid />
+      <ToolboxSection />
+      <MarqueeSection />
+      <HowItWorks />
+      <Testimonials />
+      <FaqSection />
+      <SocialSection />
+      <Footer />
+    </>
   );
 }

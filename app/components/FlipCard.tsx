@@ -4,11 +4,18 @@ import { motion, useReducedMotion } from 'framer-motion';
 import type { CSSProperties } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
-const defaultImages = ['/1.jpg', '/2.jpg', '/3.jpg', '/4.jpg', '/5.jpg', '/6.jpg'];
+const defaultImages = [
+  '/1.jpg',
+  '/2.jpg',
+  '/3.jpg',
+  '/4.JPG',
+  '/5.JPG',
+  '/6.jpg',
+];
 
 export default function FlipCard({
   images = defaultImages,
-  intervalMs = 750,
+  intervalMs = 1000,
   className,
   style,
 }: {
@@ -52,29 +59,25 @@ export default function FlipCard({
 
   return (
     <motion.div
-      className={
-        className ??
-        'relative rounded-xl border border-white/25 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.25)]'
-      }
+      className={`relative rounded-2xl border border-black/5 bg-black/5 shadow-2xl ${className ?? ''}`}
       style={{
-        width: 'clamp(4.5rem, 12vw, 8.5rem)',
         aspectRatio: '3/4',
         transformStyle: 'preserve-3d',
         ...style,
       }}
-      animate={shouldReduceMotion ? undefined : { rotateY: flipCount * 180, rotateZ: 2 }}
-      transition={shouldReduceMotion ? undefined : { duration: 0.45, ease: 'easeInOut' }}
+      animate={shouldReduceMotion ? undefined : { rotateY: flipCount * 180, rotateZ: flipCount % 2 === 0 ? 2 : -2 }}
+      transition={shouldReduceMotion ? undefined : { duration: 0.8, ease: 'easeInOut' }}
     >
       <div
-        className="absolute inset-0 overflow-hidden rounded-[0.72rem]"
+        className="absolute inset-0 overflow-hidden rounded-[0.9rem]"
         style={{ backfaceVisibility: 'hidden' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/10 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/10 to-black/10 z-10" />
         {!frontFailed && (
           <img
             src={frontSrc}
             alt="front"
-            className="relative h-full w-full object-cover grayscale-[30%]"
+            className="relative h-full w-full object-cover grayscale-[10%]"
             draggable={false}
             onError={() => setFailedSrcs((prev) => ({ ...prev, [frontSrc]: true }))}
           />
@@ -82,18 +85,18 @@ export default function FlipCard({
       </div>
 
       <div
-        className="absolute inset-0 overflow-hidden rounded-[0.72rem]"
+        className="absolute inset-0 overflow-hidden rounded-[0.9rem]"
         style={{
           backfaceVisibility: 'hidden',
           transform: 'rotateY(180deg)',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/10 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/10 to-black/10 z-10" />
         {!backFailed && (
           <img
             src={backSrc}
             alt="back"
-            className="relative h-full w-full object-cover grayscale-[30%]"
+            className="relative h-full w-full object-cover grayscale-[10%]"
             draggable={false}
             onError={() => setFailedSrcs((prev) => ({ ...prev, [backSrc]: true }))}
           />
