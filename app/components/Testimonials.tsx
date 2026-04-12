@@ -42,30 +42,34 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="testimonials">
-      <ScrollFadeIn className="test-tag">Testimonials</ScrollFadeIn>
-      <ScrollFadeIn>
-        <h2 className="test-h2">
-          Don&apos;t take my
-          <br />
-          word for it{" "}
-          <span style={{ color: "var(--yellow)" }}>✦</span>
-        </h2>
-      </ScrollFadeIn>
-      <ScrollFadeIn className="test-scroll">
-        {testimonials.map((t) => (
-          <div className="test-card" key={t.name}>
-            <div className="stars">★★★★★</div>
-            <p className="test-text">{t.text}</p>
-            <div className="test-author">
-              <div className="test-avatar">{t.initials}</div>
-              <div>
-                <div className="test-name">{t.name}</div>
-                <div className="test-role">{t.role}</div>
+      <div className="section-inner">
+        <ScrollFadeIn>
+          <div className="fn-label">Testimonials</div>
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <h2 className="test-h2">
+            Don&apos;t take my
+            <br />
+            word for it{" "}
+            <span style={{ color: "var(--yellow)" }}>✦</span>
+          </h2>
+        </ScrollFadeIn>
+        <ScrollFadeIn className="test-scroll">
+          {testimonials.map((t) => (
+            <div className="test-card" key={t.name}>
+              <div className="stars">★★★★★</div>
+              <p className="test-text">{t.text}</p>
+              <div className="test-author">
+                <div className="test-avatar">{t.initials}</div>
+                <div>
+                  <div className="test-name">{t.name}</div>
+                  <div className="test-role">{t.role}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </ScrollFadeIn>
+          ))}
+        </ScrollFadeIn>
+      </div>
     </section>
   );
 }

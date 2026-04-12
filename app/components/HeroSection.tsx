@@ -32,11 +32,17 @@ export default function HeroSection() {
         <circle cx="900" cy="180" r="180" stroke="#e8e8e8" strokeWidth="1" fill="none" />
         <circle cx="900" cy="180" r="130" stroke="#eeeeee" strokeWidth="1" fill="none" />
       </svg>
-      <div className="hero-inner">
+      <div className="section-inner hero-inner">
         <div className="hero-content min-[901px]:w-[calc(80%-30px)] min-[901px]:flex-none">
           <ScrollFadeIn className="hero-tag">Available for projects</ScrollFadeIn>
           <ScrollFadeIn>
-            <h1 className="hero-h1" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px" }}>
+            <h1 className="hero-h1" style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              gap: "6px 8px"
+            }}>
               <span>Hi! I&apos;m</span> <span className="pill yellow">Pramudya</span>
               <span className="w-full h-0"></span>
               <span>a </span>
@@ -44,6 +50,7 @@ export default function HeroSection() {
                 text="UI/UX Designer"
                 className="pill inline-flex items-center justify-center bg-[#111]"
               />
+              <span className="max-[480px]:w-full max-[480px]:h-0"></span>
               <span> from </span> <span className="pill border border-[#111] !bg-transparent !text-transparent [-webkit-text-stroke:1px_#111]">Ketapang</span>
             </h1>
           </ScrollFadeIn>
@@ -55,15 +62,23 @@ export default function HeroSection() {
             </p>
           </ScrollFadeIn>
           <ScrollFadeIn>
-            <a href="#projects" className="hero-cta">
-              Discover my work
+            <a
+              href="/CV WAHYU SEPTA PRAMUDYA MAR 2026.pdf"
+              download="CV WAHYU SEPTA PRAMUDYA MAR 2026.pdf"
+              className="hero-cta"
+            >
+              Download CV
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <path d="M5 12h14M12 5l7 7-7 7" />
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
             </a>
           </ScrollFadeIn>

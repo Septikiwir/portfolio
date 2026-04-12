@@ -24,9 +24,14 @@ export default function Navbar() {
         <Link href="#projects">Projects</Link>
         <Link href="#about">About me</Link>
         <Link href="#contact">Contact</Link>
-        <Link href="#contact" className="nav-btn">
-          Hire me →
-        </Link>
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=workwithyutaya@gmail.com&su=Project%20Inquiry%20-%20Let%27s%20Work%20Together"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-btn"
+        >
+          Send Email →
+        </a>
       </div>
     </nav>
   );

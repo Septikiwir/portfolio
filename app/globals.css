@@ -25,12 +25,48 @@ html {
     scroll-behavior: smooth;
 }
 
+#projects,
+#about,
+#contact {
+    scroll-margin-top: 100px;
+}
+
 body {
     font-family: var(--font-manrope), 'Manrope', sans-serif;
     background: var(--light);
     color: #111;
     overflow-x: hidden;
 }
+
+/* ───── UNIFIED SECTION CONTAINER ───── */
+.section-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.footer-new-container {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+    .section-inner {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-inner {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+
+
 
 /* ═══════════════════════════════════════════
    MOBILE-FIRST BASE STYLES (< 601px)
@@ -47,6 +83,11 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 14px 20px;
+
+    @media (max-width: 480px) {
+        padding: 12px 16px;
+    }
+
     border: 1px solid transparent;
     border-bottom-color: rgba(0, 0, 0, 0.06);
     margin: 0 auto;
@@ -55,26 +96,58 @@ nav {
     border-radius: 0px;
 
     transition: max-width 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        width 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        padding 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        border-radius 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        top 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 0.7s ease,
-        border-color 0.7s ease,
-        box-shadow 0.7s ease;
-    will-change: width, max-width, top, border-radius, padding;
+    width 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.7s ease,
+    border-color 0.7s ease,
+    box-shadow 0.7s ease;
+    will-change: width,
+    max-width,
+    top,
+    border-radius,
+    padding;
+}
+
+.pj-header-wrap {
+    width: 100%;
+    padding: 48px 0 6px;
+    /* Vertical only, inner handles horizontal */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 nav.scrolled {
     top: 20px;
-    width: 1200px;
+    /* Match the 1400px container width */
+    width: 1400px;
     max-width: calc(100% - 40px);
     border-radius: 100px;
     border-color: rgba(0, 0, 0, 0.08);
     /* This inherits transparent border from nav */
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-    padding: 12px 24px;
+    /* Match .section-inner padding */
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+    nav.scrolled {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav.scrolled {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
 }
 
 .nav-logo {
@@ -143,7 +216,7 @@ nav.scrolled .nav-btn {
     min-height: calc(100dvh - 64px);
     display: flex;
     align-items: center;
-    padding: 40px 20px;
+    padding: 60px 0;
     position: relative;
     overflow: hidden;
 }
@@ -162,7 +235,6 @@ nav.scrolled .nav-btn {
     flex-direction: column;
     gap: 32px;
     align-items: flex-start;
-    width: 100%;
 }
 
 .hero-meta {
@@ -247,12 +319,18 @@ nav.scrolled .nav-btn {
 }
 
 .hero-h1 {
-    font-size: clamp(22px, 7vw, 68px);
+    font-size: clamp(18px, 8vw, 68px);
     font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -1.5px;
+    line-height: 1.15;
+    letter-spacing: -1px;
     color: #111;
     margin-bottom: 24px;
+}
+
+@media (max-width: 480px) {
+    .pill {
+        padding: 2px 10px 4px;
+    }
 }
 
 .pill {
@@ -406,15 +484,16 @@ nav.scrolled .nav-btn {
     background: var(--black);
     position: relative;
     z-index: 10;
+    padding-bottom: 24px;
 }
 
 /* ───── Header ───── */
 .pj-header-wrap {
-    padding: 48px 20px 24px;
+    padding: 48px 20px 6px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -456,7 +535,7 @@ nav.scrolled .nav-btn {
 
 /* ───── Card wrapper (sticky for stacking animation) ───── */
 .stacked-card-wrapper {
-    height: 100vh;
+    height: 84vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -471,9 +550,11 @@ nav.scrolled .nav-btn {
     position: relative;
     width: 100%;
     max-width: 100%;
-    height: 82vh;
-    min-height: 0;
-    max-height: 82vh;
+    height: 60vh;
+    /* Responsive height that maintains compact proportions */
+    min-height: 480px;
+    /* Ensure content isn't crushed on very short screens */
+    max-height: 85vh;
     overflow: hidden;
     border-radius: 20px;
     display: flex;
@@ -482,6 +563,7 @@ nav.scrolled .nav-btn {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
     transform-origin: center center;
     border: 1px solid rgba(0, 0, 0, 0.04);
+    cursor: pointer !important;
 }
 
 /* ───── Layout (mobile: single column) ───── */
@@ -491,16 +573,22 @@ nav.scrolled .nav-btn {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 24px 20px;
-    gap: 16px;
-    overflow: hidden;
+    padding: 32px 24px 0;
+    /* Slightly tighter padding */
+    gap: 0;
+    overflow: visible;
+    text-align: center;
 }
 
-.sc-text-content {
+.sc-content-header {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
+    flex: 0 0 45%;
+    /* Take 45% of card height for text */
     flex-shrink: 0;
+    z-index: 10;
 }
 
 .sc-title-editorial {
@@ -513,11 +601,36 @@ nav.scrolled .nav-btn {
 }
 
 .sc-tagline {
-    font-size: 13px;
-    color: #444444 !important;
-    margin-bottom: 10px;
+    font-size: clamp(14px, 2vw, 20px);
+    color: #666 !important;
+    margin-bottom: 24px;
     font-weight: 500;
     line-height: 1.4;
+    max-width: 800px;
+}
+
+.sc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.sc-tag-pill {
+    padding: 6px 18px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.sc-tag-pill:hover {
+    border-color: #000;
+    color: #000;
 }
 
 .sc-description {
@@ -529,45 +642,109 @@ nav.scrolled .nav-btn {
     gap: 8px;
 }
 
-/* ───── Assets (mobile: flow below text, relative) ───── */
+/* ───── Assets (mobile: now respects custom positioning) ───── */
 .sc-assets {
     position: relative;
     width: 100%;
     flex: 1;
     min-height: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-end;
     justify-content: center;
-    gap: 12px;
-    padding: 4px 0 8px;
-    overflow: hidden;
+    gap: 0;
+    padding: 0;
+    overflow: visible;
+    pointer-events: none;
+    /* Allow clicks to pass to card background if needed, but assets reset to auto */
 }
 
 .sc-asset {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    width: 100% !important;
+    position: absolute !important;
+    top: var(--asset-top, auto) !important;
+    right: var(--asset-right, auto) !important;
+    bottom: var(--asset-bottom, auto) !important;
+    left: var(--asset-left, auto) !important;
+    width: var(--asset-width, 100%) !important;
     max-height: 100%;
     min-height: 0;
-    flex: 1;
-    overflow: hidden;
+    overflow: visible;
     z-index: 5;
     filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.12));
-    border-radius: 12px;
+    border-radius: 0;
+    pointer-events: auto;
 }
 
 .sc-img-fluid {
     display: block;
     width: 100%;
-    height: 100%;
-    max-height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.sc-hover-button {
+    background: #1a1a1a;
+    border: 2px solid #000;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 0 40px 40px 40px !important;
+    /* Forces the sharp iconic top-left corner */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.sc-bottom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.sc-stickers-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.sc-sticker-placeholder {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 25;
+    opacity: 0;
+}
+
+@media (min-width: 768px) {
+    .sc-sticker-placeholder {
+        width: 100px;
+        height: 100px;
+        border: 5px solid #fff;
+    }
+}
+
+.sticker-glow {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 232, 0, 0.2) 0%, transparent 70%);
 }
 
 .sc-note-card {
@@ -599,7 +776,7 @@ nav.scrolled .nav-btn {
    ═══════════════════════════════════════════ */
 @media (min-width: 768px) {
     .pj-header-wrap {
-        padding: 80px 32px 48px;
+        padding: 80px 32px 12px;
     }
 
     .pj-label {
@@ -631,16 +808,16 @@ nav.scrolled .nav-btn {
     }
 
     .sc-layout {
-        height: 100%;
-        display: grid;
-        grid-template-columns: 1.1fr 1fr;
-        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        padding: 60px 40px 0;
         gap: 32px;
         align-items: center;
     }
 
     .sc-title-editorial {
-        font-size: clamp(36px, 5vw, 56px);
+        font-size: clamp(36px, 5vw, 64px);
         margin-bottom: 20px;
         letter-spacing: -2.5px;
     }
@@ -656,32 +833,29 @@ nav.scrolled .nav-btn {
         max-width: 420px;
     }
 
-    /* Assets: switch to absolute overlay */
+    /* Assets: switch back to relative container for bottom alignment */
     .sc-assets {
-        position: absolute;
-        inset: 0;
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
         flex-direction: row;
         gap: 0;
         padding: 0;
         pointer-events: none;
+        overflow: visible;
     }
 
+    /* Assets: Already absolute from base, just refine shadow/pointer-events */
     .sc-asset {
-        position: absolute !important;
-        top: var(--asset-top, auto) !important;
-        right: var(--asset-right, auto) !important;
-        bottom: var(--asset-bottom, auto) !important;
-        left: var(--asset-left, auto) !important;
-        width: var(--asset-width, auto) !important;
-        pointer-events: auto;
         filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
     }
 
     .sc-img-fluid {
-        border-radius: 8px;
+        border-radius: 0;
         box-shadow: none;
     }
 
@@ -702,7 +876,7 @@ nav.scrolled .nav-btn {
    ═══════════════════════════════════════════ */
 @media (min-width: 1024px) {
     .pj-header-wrap {
-        padding: 120px 48px 80px;
+        padding: 120px 48px 24px;
     }
 
     .pj-label {
@@ -724,13 +898,14 @@ nav.scrolled .nav-btn {
     }
 
     .stacked-card.editorial-style {
-        max-width: 960px;
+        max-width: 1400px;
         height: 70vh;
         border-radius: 32px;
+        overflow: hidden;
     }
 
     .sc-layout {
-        padding: clamp(40px, 4vw, 60px);
+        padding: clamp(40px, 4vw, 60px) clamp(40px, 4vw, 60px) 0;
         gap: 40px;
     }
 
@@ -760,7 +935,7 @@ nav.scrolled .nav-btn {
 /* ───── PROJECTS SECTION (Original Grid - Deprecated but kept for fallback) ───── */
 .projects {
     background: var(--black);
-    padding: 16px 20px 60px;
+    padding: 60px 0;
 }
 
 .sc-category {
@@ -892,103 +1067,52 @@ nav.scrolled .nav-btn {
     min-height: 420px;
 }
 
-/* ───── TOOLBOX ───── */
-.toolbox {
+/* ───── ABOUT ME ───── */
+.about-section {
     background: var(--light);
-    padding: 60px 20px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-    align-items: center;
+    padding: 120px 0;
 }
 
-.toolbox-left .tb-tag {
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.toolbox-left .tb-tag::before {
-    content: '';
-    width: 16px;
-    height: 1px;
-    background: var(--muted);
-}
-
-.toolbox-left h2 {
-    font-size: clamp(28px, 6vw, 46px);
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
-    color: #111;
-}
-
-.tool-cards {
+.about-inner {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 32px;
 }
 
-.tool-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 18px 20px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-    transition: transform .2s, box-shadow .2s;
+.about-left {
+    flex-shrink: 0;
 }
 
-.tool-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.tc-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.tc-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-}
-
-.tc-name {
-    font-size: 13px;
-    font-weight: 700;
+.about-title {
+    font-family: var(--font-manrope), 'Manrope', sans-serif;
+    font-size: clamp(24px, 6vw, 46px);
+    font-weight: 800;
     color: #111;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin: 0;
 }
 
-.tc-desc {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
+.about-right {
+    flex: 1;
 }
 
-.tc-bar {
-    height: 3px;
-    background: #eee;
-    border-radius: 100px;
-    overflow: hidden;
+.about-paragraph {
+    font-family: var(--font-manrope), 'Manrope', sans-serif;
+    font-size: clamp(20px, 3vw, 32px);
+    line-height: 1.8;
+    letter-spacing: -0.1px;
+    color: #111;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.3em;
+    margin: 0;
 }
 
-.tc-bar-fill {
-    height: 100%;
-    background: var(--yellow);
-    border-radius: 100px;
-    transition: width 1s ease;
+.about-word {
+    display: inline-block;
+    will-change: opacity;
 }
 
 /* ───── MARQUEE ───── */
@@ -1039,7 +1163,8 @@ nav.scrolled .nav-btn {
 /* ───── HOW IT WORKS ───── */
 .how {
     background: var(--black);
-    padding: 60px 20px;
+    padding: 60px 0;
+    /* Vertical padding only, inner container handles horizontal */
 }
 
 .how-tag {
@@ -1210,7 +1335,7 @@ nav.scrolled .nav-btn {
 /* ───── TESTIMONIALS ───── */
 .testimonials {
     background: var(--black);
-    padding: 60px 20px;
+    padding: 60px 0;
     border-top: 1px solid #1a1a1a;
 }
 
@@ -1317,7 +1442,7 @@ nav.scrolled .nav-btn {
 /* ───── FAQ ───── */
 .faq {
     background: var(--light);
-    padding: 60px 20px;
+    padding: 60px 0;
 }
 
 .faq-tag {
@@ -1416,7 +1541,7 @@ nav.scrolled .nav-btn {
 /* ───── SOCIAL ───── */
 .social {
     background: var(--light);
-    padding: 60px 20px;
+    padding: 60px 0;
 }
 
 .soc-tag {
@@ -1552,8 +1677,8 @@ nav.scrolled .nav-btn {
 }
 
 .fn-label {
-    font-family: var(--font-serif);
-    font-size: clamp(18px, 4vw, 28px);
+    font-family: var(--font-manrope), 'Manrope', sans-serif;
+    font-size: 12px;
     color: #fff;
     opacity: 0.8;
     margin-bottom: 40px;
@@ -1627,6 +1752,10 @@ nav.scrolled .nav-btn {
     font-size: 13px;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .fn-talk-btn:hover {
@@ -1641,9 +1770,10 @@ nav.scrolled .nav-btn {
     border-top: 1px solid #1a1a1a;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
-    text-align: left;
+    text-align: center;
+    width: 100%;
 }
 
 .footer-copy {
@@ -1653,7 +1783,7 @@ nav.scrolled .nav-btn {
 
 .footer-links {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 24px;
 }
 
@@ -1720,9 +1850,21 @@ nav.scrolled .nav-btn {
         padding: 20px 24px 80px;
     }
 
-    .toolbox {
+    .about-section {
         padding: 80px 24px;
-        gap: 40px;
+    }
+
+    .about-inner {
+        flex-direction: row;
+        gap: 60px;
+        align-items: flex-start;
+    }
+
+    .about-left {
+        width: 30%;
+        flex-shrink: 0;
+        position: sticky;
+        top: 120px;
     }
 
     .how-step {
@@ -1777,7 +1919,7 @@ nav.scrolled .nav-btn {
     }
 
     .footer-new-container {
-        max-width: 1200px;
+        max-width: 1400px;
     }
 
     .fn-label,
@@ -1810,7 +1952,8 @@ nav.scrolled .nav-btn {
    ═══════════════════════════════════════════ */
 @media (min-width: 901px) {
     nav {
-        padding: 16px max(48px, 50vw - 600px);
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
 
     /* Show all nav links on desktop */
@@ -1823,7 +1966,8 @@ nav.scrolled .nav-btn {
     }
 
     .hero {
-        padding: 80px max(48px, 50vw - 600px) 60px;
+        padding-top: 80px;
+        padding-bottom: 60px;
     }
 
     .hero-inner {
@@ -1857,11 +2001,13 @@ nav.scrolled .nav-btn {
     }
 
     .dark-feature {
-        padding: 80px max(48px, 50vw - 600px) 60px;
+        padding-top: 80px;
+        padding-bottom: 60px;
     }
 
     .projects {
-        padding: 20px max(48px, 50vw - 600px) 80px;
+        padding-top: 20px;
+        padding-bottom: 80px;
     }
 
     .proj-grid {
@@ -1872,14 +2018,14 @@ nav.scrolled .nav-btn {
         min-height: 300px;
     }
 
-    .toolbox {
-        padding: 100px max(48px, 50vw - 600px);
-        grid-template-columns: 1fr 1.2fr;
-        gap: 80px;
+    .about-section {
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
 
     .how {
-        padding: 100px max(48px, 50vw - 600px) 60px;
+        padding-top: 100px;
+        padding-bottom: 60px;
     }
 
     .how-h2 {
@@ -1908,7 +2054,8 @@ nav.scrolled .nav-btn {
     }
 
     .testimonials {
-        padding: 100px max(48px, 50vw - 600px);
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
 
     .test-h2 {
@@ -1916,7 +2063,8 @@ nav.scrolled .nav-btn {
     }
 
     .faq {
-        padding: 100px max(48px, 50vw - 600px);
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
 
     .faq-h2 {
@@ -1924,7 +2072,8 @@ nav.scrolled .nav-btn {
     }
 
     .social {
-        padding: 60px max(48px, 50vw - 600px) 100px;
+        padding-top: 60px;
+        padding-bottom: 100px;
     }
 
     .soc-h2 {
@@ -1937,7 +2086,8 @@ nav.scrolled .nav-btn {
 
     .dark-feature,
     .footer-new {
-        padding: 96px max(80px, 50vw - 650px);
+        padding-top: 96px;
+        padding-bottom: 96px;
     }
 
     .footer-bottom-new {

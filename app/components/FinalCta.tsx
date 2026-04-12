@@ -4,15 +4,15 @@ export default function FinalCta() {
   return (
     <section className="final-cta" id="contact">
       <ScrollFadeIn className="fcta-tag">Let&apos;s talk</ScrollFadeIn>
-      <ScrollFadeIn className="fcta-avatar">AS</ScrollFadeIn>
+      <ScrollFadeIn className="fcta-avatar">WSP</ScrollFadeIn>
       <ScrollFadeIn>
         <h2 className="fcta-h2">
           Let&apos;s create something extraordinary together.
         </h2>
       </ScrollFadeIn>
       <ScrollFadeIn>
-        <a href="mailto:hello@andrew.design" className="fcta-email">
-          hello@andrew.design
+        <a href="mailto:workwithyutaya@gmail.com" className="fcta-email">
+          workwithyutaya@gmail.com
         </a>
       </ScrollFadeIn>
       <ScrollFadeIn>

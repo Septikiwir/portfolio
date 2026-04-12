@@ -1,11 +1,13 @@
 const marqueeItems = [
-  "Corporate website",
-  "Landing page",
-  "Blog",
-  "Social network",
-  "E-commerce",
-  "Dashboard",
-  "Mobile App",
+  "User Research",
+  "Wireframing",
+  "Prototyping",
+  "Usability Testing",
+  "Dashboard Design",
+  "Mobile App UX",
+  "Information Architecture",
+  "SFA Systems",
+  "Sales Intelligence",
 ];
 
 export default function MarqueeSection() {

@@ -20,8 +20,6 @@ export default function Home() {
       <ToolboxSection />
       <MarqueeSection />
       <HowItWorks />
-      <Testimonials />
-      <FaqSection />
       <SocialSection />
       <Footer />
     </>

@@ -100,7 +100,19 @@ export default function RotatingFontPill({
     <>
       <div 
         aria-hidden="true" 
-        style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', opacity: 0, zIndex: -10 }}
+        style={{ 
+          position: 'absolute', 
+          top: 0,
+          left: 0,
+          visibility: 'hidden', 
+          pointerEvents: 'none', 
+          opacity: 0, 
+          zIndex: -10,
+          maxHeight: 0,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
       >
         {Array.from({ length: maxCombinations }).map((_, i) => {
            const fFam = families[Math.min(i, families.length - 1)] ?? 'inherit';
@@ -130,6 +142,8 @@ export default function RotatingFontPill({
              flexDirection: 'row',
              whiteSpace: 'nowrap',
              width: fixedWidth ? `${fixedWidth}px` : 'auto',
+             maxWidth: '100%',
+             overflow: 'hidden',
              ...(isOutline
                 ? {
                     fontFamily,

@@ -11,13 +11,13 @@ const manrope = Manrope({
 const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Pramudya — UI/UX Designer",
+  title: "Wahyu Septa Pramudya — UI/UX Designer",
   description:
-    "I'm dedicated to crafting websites from concept to launch, combining design and development to deliver real impact for clients.",
+    "Informatics graduate with a focus on UI/UX Design. Experienced in user research, wireframing, prototyping, and usability testing to create intuitive designs.",
 };
 
 export default function RootLayout({

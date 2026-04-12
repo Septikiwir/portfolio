@@ -1,61 +1,57 @@
-import ScrollFadeIn from "./ScrollFadeIn";
+"use client";
 
-const tools = [
-  {
-    icon: "🎨",
-    iconBg: "#f0f4ff",
-    name: "Figma",
-    desc: "UI/UX Design & Prototyping",
-    progress: 95,
-  },
-  {
-    icon: "⚡",
-    iconBg: "#fff8f0",
-    name: "Framer",
-    desc: "Interactive Web Design",
-    progress: 88,
-  },
-  {
-    icon: "💻",
-    iconBg: "#f0fff4",
-    name: "Webflow / Figma",
-    desc: "No-code Development",
-    progress: 80,
-  },
-];
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const paragraph =
+  "Informatics graduate from Universitas AMIKOM Yogyakarta with a strong focus on UI/UX Design and a proven strong portfolio. Experienced in user research, wireframing, prototyping, and usability testing to create intuitive and user-centered designs. Strong in problem-solving, translating complex ideas into clear design solutions, and collaborating effectively with cross-functional teams. Passionate about creating user-centered products that are both functional and visually engaging.";
+
+function Word({
+  children,
+  range,
+  progress,
+}: {
+  children: string;
+  range: [number, number];
+  progress: import("framer-motion").MotionValue<number>;
+}) {
+  const opacity = useTransform(progress, range, [0.15, 1]);
+  return (
+    <motion.span className="about-word" style={{ opacity }}>
+      {children}
+    </motion.span>
+  );
+}
 
 export default function ToolboxSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.5", "start -0.1"],
+  });
+
+  const words = paragraph.split(" ");
+
   return (
-    <section className="toolbox" id="about">
-      <ScrollFadeIn className="toolbox-left">
-        <div className="tb-tag">Tools &amp; Skills</div>
-        <h2>
-          My creative
-          <br />
-          toolbox
-        </h2>
-      </ScrollFadeIn>
-      <ScrollFadeIn className="tool-cards">
-        {tools.map((tool) => (
-          <div className="tool-card" key={tool.name}>
-            <div className="tc-top">
-              <div className="tc-icon" style={{ background: tool.iconBg }}>
-                {tool.icon}
-              </div>
-              <div>
-                <div className="tc-name">{tool.name}</div>
-                <div className="tc-desc">{tool.desc}</div>
-              </div>
-            </div>
-            <div className="tc-bar">
-              <div
-                className="tc-bar-fill"
-                style={{ width: `${tool.progress}%` }}
-              />
-            </div>
-          </div>
-        ))}
-      </ScrollFadeIn>
+    <section className="about-section" id="about" ref={containerRef}>
+      <div className="section-inner about-inner">
+        <div className="about-left">
+          <h2 className="about-title">About Me</h2>
+        </div>
+        <div className="about-right">
+          <p className="about-paragraph">
+            {words.map((word, i) => {
+              const start = i / words.length;
+              const end = start + 1 / words.length;
+              return (
+                <Word key={i} range={[start, end]} progress={scrollYProgress}>
+                  {word}
+                </Word>
+              );
+            })}
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
