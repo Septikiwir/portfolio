@@ -2,19 +2,35 @@ export default function StatsStrip() {
   const items = (
     <>
       <div className="stat-item">
-        <span className="stat-num">3.74</span> Cumulative GPA
+        <span className="stat-num">Modern</span> UI/UX Design
       </div>
       <div className="stat-sep">✦</div>
       <div className="stat-item">
-        <span className="stat-num">50+</span> wireframes produced
+        <span className="stat-num">Seamless</span> User Experience
       </div>
       <div className="stat-sep">✦</div>
       <div className="stat-item">
-        <span className="stat-num">2</span> UI/UX internships
+        <span className="stat-num">End-to-End</span> Product Design
       </div>
       <div className="stat-sep">✦</div>
       <div className="stat-item">
-        <span className="stat-num">100%</span> user focused
+        <span className="stat-num">100%</span> User Focused
+      </div>
+      <div className="stat-sep">✦</div>
+      <div className="stat-item">
+        <span className="stat-num">Intuitive</span> Wireframing
+      </div>
+      <div className="stat-sep">✦</div>
+      <div className="stat-item">
+        <span className="stat-num">Data-Driven</span> Solutions
+      </div>
+      <div className="stat-sep">✦</div>
+      <div className="stat-item">
+        <span className="stat-num">Pixel-Perfect</span> Interfaces
+      </div>
+      <div className="stat-sep">✦</div>
+      <div className="stat-item">
+        <span className="stat-num">Creative</span> Problem Solving
       </div>
       <div className="stat-sep">✦</div>
     </>

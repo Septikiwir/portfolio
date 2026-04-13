@@ -7,15 +7,16 @@ const ArrowIcon = () => (
 );
 
 const socials = [
-  { icon: "in", name: "LinkedIn", variant: "white" },
-  { icon: "🎨", name: "Portfolio", variant: "white" },
-  { icon: "🌐", name: "mue.works", variant: "white" },
-  { icon: "📞", name: "+62 8131-888-1635", variant: "white" },
+  { icon: "in", name: "LinkedIn", variant: "white", url: "https://linkedin.com/in/wahyuseptapramudya" },
+  { icon: "🎨", name: "Portfolio", variant: "white", url: "https://drive.google.com/drive/folders/1RHekcCkKzsaX-Sq6Tm4QhhG_qInyeaF_?usp=drive_link" },
+  { icon: "🌐", name: "mue.works", variant: "white", url: "https://mue.works" },
+  { icon: "📞", name: "+62 8131-888-1635", variant: "white", url: "https://wa.me/6281318881635" },
   {
     icon: "✉",
     name: "workwithyutaya@gmail.com",
     variant: "yellow",
     span2: true,
+    url: "https://mail.google.com/mail/?view=cm&fs=1&to=workwithyutaya@gmail.com&su=Project%20Inquiry%20-%20Let%27s%20Work%20Together",
     nameStyle: { fontSize: "16px" },
     arrowStyle: { background: "rgba(0,0,0,0.15)" },
     arrowStroke: "#111",
@@ -34,10 +35,17 @@ export default function SocialSection() {
         </ScrollFadeIn>
         <ScrollFadeIn className="soc-grid">
           {socials.map((s) => (
-            <div
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`soc-card ${s.variant}${s.span2 ? " span2" : ""}`}
               key={s.name}
-              style={s.span2 ? { minHeight: "120px" } : undefined}
+              style={{
+                ...(s.span2 ? { minHeight: "120px" } : {}),
+                textDecoration: "none",
+                display: "flex"
+              }}
             >
               <div className="soc-card-icon">{s.icon}</div>
               <div className="soc-card-name" style={s.nameStyle}>
@@ -57,7 +65,7 @@ export default function SocialSection() {
                   <ArrowIcon />
                 )}
               </div>
-            </div>
+            </a>
           ))}
         </ScrollFadeIn>
       </div>

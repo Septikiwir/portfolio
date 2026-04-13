@@ -41,11 +41,6 @@ export default function Footer() {
           <div className="footer-copy">
             © 2026 Wahyu Septa Pramudya. All rights reserved.
           </div>
-          <div className="footer-links">
-            <Link href="#">Privacy</Link>
-            <Link href="#">Terms</Link>
-            <Link href="#">Sitemap</Link>
-          </div>
         </div>
       </div>
     </footer>

@@ -6,11 +6,11 @@ const steps = [
     tag: "Kreasitech (Internship)",
     title: "UI/UX Designer",
     mobileTitle: "UI/UX Designer at Kreasitech",
-    desc: "Designing HiSales and IDAS SFA to support sales and field operations.",
+    desc: "Spearheaded UI/UX initiatives and developed robust design systems to streamline digital experiences.",
     items: [
-      { name: "HiSales", desc: "Designed intelligence platform for automated lead management." },
-      { name: "SFA Mobile", desc: "Developed mobile workflows for salesman and field delivery." },
-      { name: "Collaboration", desc: "Worked with developers to ensure feasible implementation." }
+      { name: "Product Design", desc: "Mastered end-to-end design processes from ideation to high-fidelity mockups." },
+      { name: "Prototyping", desc: "Built interactive prototypes in Figma to validate workflows and user journeys." },
+      { name: "Design Handoff", desc: "Collaborated directly with developers to guarantee pixel-perfect implementation." }
     ],
     duration: "Aug 2025 - Mar 2026",
   },
@@ -19,11 +19,11 @@ const steps = [
     tag: "Seven Inc (Internship)",
     title: "UI/UX Designer",
     mobileTitle: "UI/UX Designer at Seven Inc",
-    desc: "Produced 50+ interactive prototypes and conducted usability testing for social apps.",
+    desc: "Led comprehensive user research and developed extensive interactive prototypes.",
     items: [
-      { name: "Buzzer App", desc: "Produced 50+ wireframes and interactive prototypes in Figma." },
-      { name: "Research", desc: "Conducted usability testing and user feedback analysis." },
-      { name: "Strategy", desc: "Translated user surveys into actionable design solutions." }
+      { name: "Wireframing", desc: "Produced high-fidelity wireframes and interactive prototypes in Figma." },
+      { name: "User Research", desc: "Conducted rigorous usability testing and user feedback analysis." },
+      { name: "UX Strategy", desc: "Translated complex user surveys into actionable design solutions." }
     ],
     duration: "Feb 2024 - Jun 2024",
   },
@@ -36,16 +36,16 @@ const steps = [
     items: [
       { name: "Informatics", desc: "Specializing in software engineering and product design." },
       { name: "GPA", desc: "Graduated with 3.74 / 4.00 total score." },
-      { name: "Hard Skills", desc: "Mastered full stack development basics and design systems." }
+      { name: "Hard Skills", desc: "Skilled in creating user-centered designs and consistent design systems" }
     ],
     duration: "Aug 2022 - Mar 2026",
   },
 ];
 
 const stats = [
-  { value: "3.74", label: "Cumulative GPA", variant: "yellow" as const },
-  { value: "50+", label: "Wireframes Produced", variant: "dark" as const },
-  { value: "3+", label: "Companies & Projects", variant: "light" as const },
+  { value: "10+", label: "Projects Delivered", variant: "yellow" as const },
+  { value: "150+", label: "High-Fidelity Screens", variant: "dark" as const },
+  { value: "2 Years+", label: "Experience", variant: "light" as const },
 ];
 
 export default function HowItWorks() {
